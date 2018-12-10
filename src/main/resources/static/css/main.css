@@ -1,0 +1,110 @@
+@charset "UTF-8";  
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+figure.snip1132 {
+  font-family: 'Raleway', Arial, sans-serif;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 220px;
+  max-width: 310px;
+  height: 220px;
+  text-align: center;
+}
+
+/*  줌인 효과 */
+figure.snip1132 * {
+  -webkit-transition: all 0.45s ease-in-out;
+  transition: all 0.45s ease-in-out;
+}
+
+/*  사진 크기 */
+figure.snip1132 img {
+  width: 100%;
+  height: 100%;
+
+  opacity: 1;
+}
+
+
+/* 박스 안 옵션 */
+figure.snip1132 h3:before,
+figure.snip1132 p:before,
+figure.snip1132 h3:after,
+figure.snip1132 p:after {
+/*   position: absolute; */
+  display: block;
+}
+
+
+/*  이미지 효과 */
+figure.snip1132:hover img,
+figure.snip1132.hover img {
+  opacity: 0.35;
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15);
+}
+
+/* 박스 위치 */
+div.container {
+   width: 1000px;
+   margin-left: auto;
+   margin-right: auto;
+
+}
+
+
+
+/*  메뉴바 */
+header {
+    position: fixed;
+    top: 0;
+    transition: top 0.2s ease-in-out;
+    width: 100%;
+}
+
+.nav-up {
+    top: -40px;
+}
+
+body { height:9950px;}
+
+
+body { margin: 0; }
+
+.zeta-menu-bar {
+  background: gray;
+  display: inline-block;
+  width: 100%;
+}
+.zeta-menu { margin: 0; padding: 0; }
+.zeta-menu li {
+  float: left;
+  list-style:none;
+  position: relative;
+}
+.zeta-menu li:hover { background: white; }
+.zeta-menu li:hover>a { color: gray; }
+.zeta-menu a {
+  color: white;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+.zeta-menu ul {
+  background: #eee;
+  border: 1px solid silver;
+  display: none;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 180px;
+}
+.zeta-menu ul li { float: none; }
+.zeta-menu ul li:hover { background: #ddd; }
+.zeta-menu ul li:hover a { color: black; }
+.zeta-menu ul a { color: black; }
+.zeta-menu ul ul { left: 100%; top: 0; }
+.zeta-menu ul ul li {float:left; margin-right:10px;}
+

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+
+body {
+   margin: 0;
+}
+
+.scene {
+   background-attachment : fixed;
+    background-size : cover;   
+   height: 100vh;
+   overflow: hidden;
+}
+ .scene.one { 
+ background-image: url(img/cl1.png);
+ background-size: 700px;}
+ 
+ .scene.two { 
+ background-image: url(img/cl2.jpg); 
+ }
+ 
+ .scene.three {
+ background-image: url(img/cl3.png);
+
+ }
+  .scene.four { 
+ background-image: url(img/cl4.jpg); 
+  
+  }
+ 
+
+#videobcg
+{ 
+
+left: 95px;
+/* min-width:   100vh; */
+ min-height:  100vh;
+width: auto;
+ height: 200px;  
+z-index: -1000;
+overflow: hidden;
+loop:loop;
+width: 700px; 
+display: block; 
+margin: 0 auto;
+} 
