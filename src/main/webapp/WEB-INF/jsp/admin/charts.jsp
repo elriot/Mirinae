@@ -12,6 +12,8 @@
 <meta name="author" content="">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="../startbootstrap-sb-admin-3.3.7/js/jquery.js"></script>
+<script src="../startbootstrap-sb-admin-3.3.7/js/bootstrap.min.js"></script>
 <script>
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(siba);
