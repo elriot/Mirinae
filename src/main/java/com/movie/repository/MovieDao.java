@@ -54,8 +54,8 @@ public class MovieDao {
 	}
 	
 	// 상영중 영화 모두 가져오기 max num- 예약페이지
-	public List<MovieVO> getMovieTitle(String max) {
-		List<MovieVO> list = jdbcTemplate.query("select * from movie where mv_isTrue='T' and mv_startDate <= date_format(?, '%Y-%m-%d') group by mv_title",
+	public List<MovieVO> getMovieTitle(String max) { 
+		List<MovieVO> list = jdbcTemplate.query("select * from movie where mv_isTrue='T' and mv_startDate <= ? group by mv_title",
 				new BeanPropertyRowMapper<MovieVO>(MovieVO.class), max);
 		return list;
 	}
@@ -140,7 +140,7 @@ public class MovieDao {
 	
 	// 메인에 출력될 영화 리스트 (mv_isTrue="T" 모두 가져오기) 
 	public List<MovieVO>getMoviesForMainPage() {
-		List<MovieVO> list = jdbcTemplate.query("select * from movie where mv_isTrue='T'", new BeanPropertyRowMapper<MovieVO>(MovieVO.class));
+		List<MovieVO> list = jdbcTemplate.query("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' group by mv_title", new BeanPropertyRowMapper<MovieVO>(MovieVO.class));
 		return list;
 	}
 	

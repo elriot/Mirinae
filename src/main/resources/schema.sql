@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS book (
-  bk_num integer SERIAL PRIMARY KEY,
+  bk_num SERIAL PRIMARY KEY,
   mb_ID varchar(20),
   mv_num integer,
   tt_num varchar(20),
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS book (
 
 
 CREATE TABLE IF NOT EXISTS cs (
-  num integer SERIAL PRIMARY KEY,
+  num SERIAL PRIMARY KEY,
   cs_type varchar(20),
   id varchar(30),
   title varchar(50),
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS cs (
 
 
 CREATE TABLE IF NOT EXISTS member (
-  mb_num integer SERIAL PRIMARY KEY,
+  mb_num SERIAL PRIMARY KEY,
   mb_ID varchar(20),
   mb_passwd varchar(20),
   mb_name varchar(20),
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS member (
 
 
 CREATE TABLE IF NOT EXISTS movie (
-  mv_num integer SERIAL PRIMARY KEY,
+  mv_num SERIAL PRIMARY KEY,
   mv_title varchar(100),
   mv_rating varchar(20),
   mv_detail varchar(1000),
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS movie (
 
 
 CREATE TABLE IF NOT EXISTS notice (
-  nt_num integer SERIAL PRIMARY KEY,
+  nt_num SERIAL PRIMARY KEY,
   nt_subject varchar(200),
   nt_content varchar(10000),
   nt_writeDate varchar(50),
