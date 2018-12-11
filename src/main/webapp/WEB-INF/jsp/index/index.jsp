@@ -49,7 +49,7 @@ $(document).ready(function () {
 			
 			<br><br><br><br><br>
 
-		<table class="table table">
+<%-- 		<table class="table table">
         <tr>
 		<c:choose>
 		
@@ -81,7 +81,7 @@ $(document).ready(function () {
 		</c:choose>
 		</tr>
 
-	</table>
+	</table> --%>
 	</div>
 	</div>
 
