@@ -1,6 +1,5 @@
 package com.movie.repository;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,7 +42,7 @@ public class MovieDao {
 				//System.out.println("5초에 한번씩 작동함 :");
 			}
 		};
-		timer.scheduleAtFixedRate(timerTask, 0, 1000*60*60*24); // 24시간에 한번씩
+		timer.scheduleAtFixedRate(timerTask, 0, 1000*60*60*24); // 1000*60*60*24 : 24시간에 한번씩
 		//timer.scheduleAtFixedRate(timerTask, 0, 5000); // 5초에 한번씩
 	}
 	
