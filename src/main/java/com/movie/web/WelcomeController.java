@@ -17,12 +17,12 @@ public class WelcomeController {
 
 	@RequestMapping("/")
 	public String welcome(Model model) {
-//		List<MovieVO> list = movieDao.getMoviesForMainPage();
-//		for (MovieVO vo : list) {
-//		//	System.out.println(vo.toString());
-//		}
-//		
-//		model.addAttribute("list", list);
+		List<MovieVO> list = movieDao.getMoviesForMainPage();
+		for (MovieVO vo : list) {
+		//	System.out.println(vo.toString());
+		}
+		
+		model.addAttribute("list", list);
 		return "index/index";
 	}
 	
