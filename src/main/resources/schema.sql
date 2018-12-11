@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS movie (
   mv_startDate varchar(20),
   mv_endDate varchar(20),
   mv_time varchar(20),
-  mv_isTrue varchar(10) DEFAULT 'T'
+  mv_isTrue varchar(10)
 );
 
 
