@@ -140,7 +140,7 @@ public class MovieDao {
 	
 	// 메인에 출력될 영화 리스트 (mv_isTrue="T" 모두 가져오기) 
 	public List<MovieVO>getMoviesForMainPage() {
-		List<MovieVO> list = jdbcTemplate.query("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' group by mv_title", new BeanPropertyRowMapper<MovieVO>(MovieVO.class));
+		List<MovieVO> list = jdbcTemplate.query("select DISTINCT mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T'", new BeanPropertyRowMapper<MovieVO>(MovieVO.class));
 		return list;
 	}
 	
