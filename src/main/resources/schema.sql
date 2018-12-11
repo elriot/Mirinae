@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS book (
+CREATE TABLE book (
   bk_num integer PRIMARY KEY,
   mb_ID varchar(20),
   mv_num integer,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS book (
 );
 
 
-CREATE TABLE IF NOT EXISTS cs (
+CREATE TABLE cs (
   num integer PRIMARY KEY,
   cs_type varchar(20),
   id varchar(30),
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS cs (
 );
 
 
-CREATE TABLE IF NOT EXISTS member (
+CREATE TABLE member (
   mb_num integer PRIMARY KEY,
   mb_ID varchar(20),
   mb_passwd varchar(20),
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS member (
 );
 
 
-CREATE TABLE IF NOT EXISTS movie (
+CREATE TABLE movie (
   mv_num integer PRIMARY KEY,
   mv_title varchar(100),
   mv_rating varchar(20),
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS movie (
 );
 
 
-CREATE TABLE IF NOT EXISTS notice (
+CREATE TABLE notice (
   nt_num integer PRIMARY KEY,
   nt_subject varchar(200),
   nt_content varchar(10000),
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS notice (
 );
 
 
-CREATE TABLE IF NOT EXISTS theather (
+CREATE TABLE theather (
   tt_num varchar(20),
   tt_seatNum varchar(20) 
 );
