@@ -32,7 +32,7 @@ public class AdminDao {
 
 	
 	public void insertMv(MovieVO movie) {
-		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("movie");
+		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("movie").usingGeneratedKeyColumns("mv_num");
 		movie.setMv_isTrue("T");
 		simpleJdbcInsert.execute(new BeanPropertySqlParameterSource(movie));
 	}

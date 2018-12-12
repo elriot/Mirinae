@@ -28,7 +28,7 @@ public class MovieDao {
 	
 	@PostConstruct
 	public void init() {
-		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("movie");
+		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("movie").usingGeneratedKeyColumns("mv_num");
 		
 		
 		Timer timer = new Timer();

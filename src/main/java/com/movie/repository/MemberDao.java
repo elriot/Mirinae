@@ -31,7 +31,8 @@ public class MemberDao {
 	@PostConstruct
 	public void init() {
 		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-		simpleJdbcInsert.withTableName("member"); // 필수
+		simpleJdbcInsert.withTableName("member").usingGeneratedKeyColumns("mb_num"); // 필수
+		jdbcTemplate.execute("insert into member (mb_ID, mb_passwd, mb_name, mb_email, mb_phone, mb_grade, mb_point, mb_joinDate) values ('admin', '1234', '관리자', 'admin@admin.ccc', '000', 'master', 99999999, '2018-01-01')");
 		// 기본키 이면서 AUTO_INCREMENT 컬럼이름 설정
 		// simpleJdbcInsert.usingGeneratedKeyColumns("");
 	}

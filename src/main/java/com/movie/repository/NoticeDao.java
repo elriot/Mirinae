@@ -26,7 +26,7 @@ public class NoticeDao {
 	@PostConstruct
 	public void init() {
 		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-		simpleJdbcInsert.withTableName("notice");
+		simpleJdbcInsert.withTableName("notice").usingGeneratedKeyColumns("nt_num");;
 	}
 	
 	public int count() {

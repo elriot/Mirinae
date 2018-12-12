@@ -278,7 +278,7 @@ public class MemberController {
 
 			out.println("<script>");
 			out.println("alert('패스워드 틀림');");
-			out.println("history.back();");
+			out.println("location.href='/movie/member/myPage';");
 			out.println("</script>");
 			out.close(); // out.flush() 먼저 수행하고 자원닫기
 			
@@ -288,7 +288,7 @@ public class MemberController {
 			memberService.update(memberVO);
 			out.println("<script>");
 			out.println("alert('수정 성공');");	
-			out.println("location.href='/movie/';");
+			out.println("location.href='/movie/member/myPage';");
 			out.println("</script>");
 			out.close();
 
