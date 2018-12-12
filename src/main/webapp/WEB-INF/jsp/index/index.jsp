@@ -89,7 +89,7 @@ $(document).ready(function () {
 </body>
    
 <%@include file="../footer.jsp"%>
-<%-- <table class="table table-hover">
+<table class="table table-hover">
 	<thead>
 		<tr>
 			<th>제목</th>
@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 
 	</tbody>
-</table> --%>
+</table>
 
 
 

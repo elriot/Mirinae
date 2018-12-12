@@ -107,7 +107,7 @@ public class AdminDao {
 	// 이인혁 20181206 추가
 	public List<CsVO> getAllCs(int startRow, int pageSize){
 		System.out.println("getAllCs");
-		String sql ="SELECT * FROM cs ORDER BY num DESC limit ?,?";
+		String sql ="SELECT * FROM cs ORDER BY num DESC offset ? limit ?";
 		List<CsVO> list = jdbcTemplate.query
 				(sql, new BeanPropertyRowMapper<CsVO>(CsVO.class),startRow -1,pageSize);				
 		return list;

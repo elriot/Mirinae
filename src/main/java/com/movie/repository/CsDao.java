@@ -33,7 +33,7 @@ public class CsDao {
 	}
 	
 	public List<CsVO> getCsList(String id, int startRow){
-		String sql = "SELECT * FROM cs WHERE id=? ORDER BY num DESC limit ?,5";
+		String sql = "SELECT * FROM cs WHERE id=? ORDER BY num DESC offset ? limit 5";
 			
 		List<CsVO>list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<CsVO>(CsVO.class),id,startRow);
 		

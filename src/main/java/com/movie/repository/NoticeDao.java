@@ -45,7 +45,7 @@ public class NoticeDao {
 	}
 	
 	public List<NoticeVO> getNoticeList(int startRow) {
-		List<NoticeVO> list = jdbcTemplate.query("SELECT * FROM notice ORDER BY nt_num desc limit ?, 5", 
+		List<NoticeVO> list = jdbcTemplate.query("SELECT * FROM notice ORDER BY nt_num desc offset ? limit 5", 
 				new BeanPropertyRowMapper<NoticeVO>(NoticeVO.class), startRow - 1);
 		return list;
 	}
