@@ -123,6 +123,7 @@ public class MemberDao {
 		}
 	}*/
 
+	
 	public MemberVO get(String mb_ID) {
 		// queryForObject() 메소드는 행 1개만 가져오는 select문 실행시 사용함.
 		// 행이 0개 또는 2개 이상 가져오면 예외가 발생함.
@@ -202,15 +203,7 @@ public class MemberDao {
 				"UPDATE member SET mb_point=:mb_point-200 WHERE mb_ID=:mb_ID",
 				new BeanPropertySqlParameterSource(memberVO));
 	}
-	
-	
-	
-		
-	
-	
-	
-	
-	
+
 	// 나의 예약정보 가져오기 1. 내 아이디로 가져오기 (mv_num별)
 	public List<BookVO> getBookListByMbIDGroupByMvNum(String mb_ID){
 		return jdbcTemplate.query("SELECT distinct mv_num FROM book WHERE mb_ID=? order by mv_num asc ", new BeanPropertyRowMapper<BookVO>(BookVO.class), mb_ID);
