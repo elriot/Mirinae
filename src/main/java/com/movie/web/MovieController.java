@@ -21,8 +21,8 @@ public class MovieController {
 	private MovieDao movieDao;
 
 	@RequestMapping("detail")
-	public String detail(@RequestParam String mv_num, Model model) {
-		MovieVO movieVO = movieDao.getMovieByMvNum(mv_num);
+	public String detail(@RequestParam String mv_title, Model model) {
+		MovieVO movieVO = movieDao.getMovieByMvTitle(mv_title);
 		
 		movieVO.setMv_trailer(MyUtils.getYoutubeParse(movieVO.getMv_trailer()));
 		movieVO.setMv_detail(movieVO.getMv_detail().replace("\r\n", "<br>"));

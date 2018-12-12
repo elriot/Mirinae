@@ -63,7 +63,7 @@ $(document).ready(function () {
 					<img src="img/${item.mv_rating}_mini.png" width="20" height="20"><b>&nbsp;${item.mv_title }</b><br>
 					 ${item.mv_releaseDate } 개봉  --- ${item.mv_num}<br>
 					 ${item.toString() }	
-					<input type="button" class="btn center" onclick="location.href='movie/detail?mv_num=${item.mv_num}'" value="상세보기"><br>
+					<input type="button" class="btn center" onclick="location.href='movie/detail?mv_title=${item.mv_title}'" value="상세보기"><br>
 				</td>
 
 				<c:if test="${no%3==0 }">
