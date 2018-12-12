@@ -56,14 +56,14 @@ public class MovieDao {
 	
 	// 상영중 영화 모두 가져오기 max num- 예약페이지
 	public List<MovieVO> getMovieTitle(String max) { 
-		List<MovieVO> list = jdbcTemplate.query("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' and mv_startDate <= ? group by mv_title",
+		List<MovieVO> list = jdbcTemplate.query("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' and mv_startDate <= ? group by mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer",
 				new BeanPropertyRowMapper<MovieVO>(MovieVO.class), max);
 		return list;
 	}
 	
 	// 영화 상영 취소용
 	public List<MovieVO> getMovieTitle() {
-		List<MovieVO> list = jdbcTemplate.query("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' and mv_startDate <= to_char(current_timestamp, 'yyyy-mm-dd') group by mv_title",
+		List<MovieVO> list = jdbcTemplate.query("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' and mv_startDate <= to_char(current_timestamp, 'yyyy-mm-dd') group by mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer",
 				new BeanPropertyRowMapper<MovieVO>(MovieVO.class));
 		return list;
 	}
@@ -79,7 +79,7 @@ public class MovieDao {
 
 	// 상영 시작, 종료일 확인하여 캘린더 min, max값 조정하기
 	public MovieVO getMovieByTitle(String mv_title) {
-		MovieVO movieVO = jdbcTemplate.queryForObject("select * from movie where mv_title=? group by mv_title",
+		MovieVO movieVO = jdbcTemplate.queryForObject("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_title=? group by mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer",
 				new BeanPropertyRowMapper<MovieVO>(MovieVO.class), mv_title);
 		return movieVO;
 	}
@@ -109,14 +109,14 @@ public class MovieDao {
 
 	// 선택 가능한 영화 타이틀 가져오기
 	public List<MovieVO> getMovies(String title) {
-		String sql = "select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_title=? and mv_isTrue='T' and mv_endDate >= to_char(current_timestamp, 'yyyy-mm-dd') group by mv_time";
+		String sql = "select mv_time, mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_title=? and mv_isTrue='T' and mv_endDate >= to_char(current_timestamp, 'yyyy-mm-dd') group by mv_time, mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), title);
 		return list;
 	}
 
 	// 선택 가능한 시간 가져오기
 	public List<MovieVO> getAbleDate(String mv_title, String mv_date) {
-		String sql = "select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_endDate >= to_char(current_timestamp, 'yyyy-mm-dd') and mv_title =? and mv_isTrue='T' group by mv_time";
+		String sql = "select mv_time, mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_endDate >= to_char(current_timestamp, 'yyyy-mm-dd') and mv_title =? and mv_isTrue='T' group by mv_time, mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), mv_date,
 				mv_title);
 		return list;

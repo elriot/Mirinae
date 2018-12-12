@@ -75,7 +75,7 @@ public class BookDao {
 
 	// 선택 가능한 영화 타이틀 가져오기
 	public List<MovieVO> getMovies(String title) {
-		String sql = "select mv_time, mv_enddate from movie where mv_title=? and mv_isTrue='T' and mv_startDate <= to_char(current_timestamp, 'yyyy-mm-dd') and mv_endDate >= to_char(current_timestamp(), 'yyyy-mm-dd') group by mv_time";
+		String sql = "select mv_time, mv_enddate from movie where mv_title=? and mv_isTrue='T' and mv_startDate <= to_char(current_timestamp, 'yyyy-mm-dd') and mv_endDate >= to_char(current_timestamp(), 'yyyy-mm-dd') group by mv_time, mv_enddate";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), title);
 		return list;
 	}
