@@ -124,9 +124,15 @@ public class AdminController {
 		String[] tt_nums = request.getParameterValues("tt_num");
 		String[] mv_times = request.getParameterValues("mv_time");
 		
+		Integer maxMvNum = adminDao.getMaxMvnum();
+		if (maxMvNum==null) {
+			maxMvNum= 1;
+		}
+		//int directory = (((maxMvNum+1)/100)+1)*100;
+		
 		if(tt_nums.length == 1 && mv_times.length == 1) {
-			int maxMvNum = adminDao.getMaxMvnum();
-			int directory = (((maxMvNum+1)/100)+1)*100;
+
+
 			//File dic = new File(realPath+"/"+directory+"/"+(maxMvNum+1));
 			//if(!dic.exists()) {
 				//dic.mkdirs();
@@ -140,8 +146,8 @@ public class AdminController {
 				mv.setTt_num(Integer.parseInt(tt_nums[i]));
 				for(int j=0; j<mv_times.length; j++) {
 					mv.setMv_time(mv_times[j]);
-					int maxMvNum = adminDao.getMaxMvnum();
-					int directory = (((maxMvNum+1)/100)+1)*100;
+					//int maxMvNum = adminDao.getMaxMvnum();
+					//int directory = (((maxMvNum+1)/100)+1)*100;
 //					File dic = new File(realPath+"/"+directory+"/"+(maxMvNum+1));
 //					if(!dic.exists()) {
 //						dic.mkdirs();

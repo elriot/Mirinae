@@ -38,9 +38,9 @@ public class AdminDao {
 	}
 	
 	// 현재 등록된 영화의 최대 mv_num 찾기, 영화 등록시 해당영화의 파일업로드 경로 설정을 위해 필요
-		public int getMaxMvnum() {
+		public Integer getMaxMvnum() {
 			String sql = "select max(mv_num) from movie";
-			int max = jdbcTemplate.queryForObject(sql, Integer.class);
+			Integer max = jdbcTemplate.queryForObject(sql, Integer.class);
 			return max;
 		}
 	
