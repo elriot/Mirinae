@@ -121,7 +121,7 @@
                             
                             <div class="form-group">
                                 <label>포스터 등록</label>
-                                <input type="file" name="image" required>
+                                <input type="file" name="image">
                             </div>
                             
                       		<div class="form-group">
