@@ -89,7 +89,7 @@ public class ScheduleDao {
 	
 	
 	// 선택한 모든 정보로 mv_num(기본키) 찾기 
-	public MovieVO getMovieMvnum(String mv_title, String mv_time, Integer tt_num) {
+	public MovieVO getMovieMvnum(String mv_title, String mv_time, String tt_num) {
 		MovieVO movieVO = jdbcTemplate.queryForObject("select * from movie where mv_title=? and mv_time=? and tt_num=?",
 				new BeanPropertyRowMapper<MovieVO>(MovieVO.class), mv_title, mv_time, tt_num);
 		return movieVO;

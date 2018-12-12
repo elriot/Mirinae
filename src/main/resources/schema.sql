@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS movie (
   mv_releaseDate varchar(20)  ,
   mv_postImage varchar(50)  ,
   mv_trailer varchar(100)  ,
-  tt_num integer ,
+  tt_num varchar(20) ,
   mv_startDate varchar(20)  ,
   mv_endDate varchar(20)  ,
   mv_time varchar(20)  ,

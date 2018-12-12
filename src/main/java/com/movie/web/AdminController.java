@@ -139,7 +139,7 @@ public class AdminController {
 			adminDao.insertMv(mv);
 		} else {
 			for(int i=0; i<tt_nums.length; i++) {
-				mv.setTt_num(Integer.parseInt(tt_nums[i]));
+				mv.setTt_num(tt_nums[i]);
 				for(int j=0; j<mv_times.length; j++) {
 					mv.setMv_time(mv_times[j]);
 					//int maxMvNum = adminDao.getMaxMvnum();

@@ -25,7 +25,7 @@ public class MovieVO {
 	private String mv_releaseDate;
 	private String mv_postImage;
 	private String mv_trailer;
-	private Integer tt_num;
+	private String tt_num;
 	private String mv_startDate;
 	private String mv_endDate;
 	private String mv_time;
@@ -74,10 +74,10 @@ public class MovieVO {
 	public void setMv_trailer(String mv_trailer) {
 		this.mv_trailer = mv_trailer;
 	}
-	public Integer getTt_num() {
+	public String getTt_num() {
 		return tt_num;
 	}
-	public void setTt_num(Integer tt_num) {
+	public void setTt_num(String tt_num) {
 		this.tt_num = tt_num;
 	}
 	public String getMv_startDate() {
