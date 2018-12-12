@@ -24,6 +24,8 @@ import com.movie.domain.MovieVO;
 public class AdminDao {
 	
 	@Autowired
+	
+	
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -35,6 +37,7 @@ public class AdminDao {
 		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("movie").usingGeneratedKeyColumns("mv_num");
 		movie.setMv_isTrue("T");
 		simpleJdbcInsert.execute(new BeanPropertySqlParameterSource(movie));
+		
 	}
 	
 	// 현재 등록된 영화의 최대 mv_num 찾기, 영화 등록시 해당영화의 파일업로드 경로 설정을 위해 필요
