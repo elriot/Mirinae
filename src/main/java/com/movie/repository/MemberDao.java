@@ -32,7 +32,7 @@ public class MemberDao {
 	public void init() {
 		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
 		simpleJdbcInsert.withTableName("member").usingGeneratedKeyColumns("mb_num"); // 필수
-		jdbcTemplate.execute("insert into member (mb_ID, mb_passwd, mb_name, mb_email, mb_phone, mb_grade, mb_point, mb_joinDate) values ('admin', '1234', '관리자', 'admin@admin.ccc', '000', 'master', 99999999, '2018-01-01')");
+		jdbcTemplate.execute("insert into member (mb_ID, mb_passwd, mb_name, mb_email, mb_phone, mb_grade, mb_point, mb_joinDate) values ('admin', '1234', '관리자', 'admin@admin.ccc', '000', 'master', 99999999, '2018-01-01 10:54:38.021')");
 		// 기본키 이면서 AUTO_INCREMENT 컬럼이름 설정
 		// simpleJdbcInsert.usingGeneratedKeyColumns("");
 	}
@@ -213,7 +213,7 @@ public class MemberDao {
 	
 	// 나의 예약정보 가져오기 1. 내 아이디로 가져오기 (mv_num별)
 	public List<BookVO> getBookListByMbIDGroupByMvNum(String mb_ID){
-		return jdbcTemplate.query("SELECT * FROM book WHERE mb_ID=? group by mv_num order by bk_date asc", new BeanPropertyRowMapper<BookVO>(BookVO.class), mb_ID);
+		return jdbcTemplate.query("SELECT * FROM book WHERE mb_ID=? group by mv_num order by mv_num asc", new BeanPropertyRowMapper<BookVO>(BookVO.class), mb_ID);
 	}
 	
 	// 나의 예약정보 가져오기 2. mv_nu으로 영화 타이틀 가져오기
