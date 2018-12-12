@@ -51,7 +51,7 @@ public class MovieDao {
 	}
 	
 	public void updateMovieTrue() {
-		jdbcTemplate.update("update movie set mv_isTrue='F' where mv_endDate < to_char(current_timestamp(), 'yyyy-mm-dd')");
+		jdbcTemplate.update("update movie set mv_isTrue='F' where mv_endDate < to_char(current_timestamp, 'yyyy-mm-dd')");
 	}
 	
 	// 상영중 영화 모두 가져오기 max num- 예약페이지
@@ -63,7 +63,7 @@ public class MovieDao {
 	
 	// 영화 상영 취소용
 	public List<MovieVO> getMovieTitle() {
-		List<MovieVO> list = jdbcTemplate.query("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' and mv_startDate <= to_char(current_timestamp(), 'yyyy-mm-dd') group by mv_title",
+		List<MovieVO> list = jdbcTemplate.query("select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' and mv_startDate <= to_char(current_timestamp, 'yyyy-mm-dd') group by mv_title",
 				new BeanPropertyRowMapper<MovieVO>(MovieVO.class));
 		return list;
 	}
@@ -109,14 +109,14 @@ public class MovieDao {
 
 	// 선택 가능한 영화 타이틀 가져오기
 	public List<MovieVO> getMovies(String title) {
-		String sql = "select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_title=? and mv_isTrue='T' and mv_endDate >= to_char(current_timestamp(), 'yyyy-mm-dd') group by mv_time";
+		String sql = "select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_title=? and mv_isTrue='T' and mv_endDate >= to_char(current_timestamp, 'yyyy-mm-dd') group by mv_time";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), title);
 		return list;
 	}
 
 	// 선택 가능한 시간 가져오기
 	public List<MovieVO> getAbleDate(String mv_title, String mv_date) {
-		String sql = "select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_endDate >= to_char(current_timestamp(), 'yyyy-mm-dd') and mv_title =? and mv_isTrue='T' group by mv_time";
+		String sql = "select mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_endDate >= to_char(current_timestamp, 'yyyy-mm-dd') and mv_title =? and mv_isTrue='T' group by mv_time";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), mv_date,
 				mv_title);
 		return list;
@@ -124,7 +124,7 @@ public class MovieDao {
 
 	// 선택 가능한 상영관 가져오기
 	public List<MovieVO> getAbleTheather(String mv_title, String mv_date, String mv_time) {
-		String sql = "select * from movie where mv_endDate >= to_char(current_timestamp(), 'yyyy-mm-dd') and mv_title =? and mv_isTrue='T' and mv_time=?";
+		String sql = "select * from movie where mv_endDate >= to_char(current_timestamp, 'yyyy-mm-dd') and mv_title =? and mv_isTrue='T' and mv_time=?";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), mv_date,
 				mv_title, mv_time);
 		return list;
@@ -141,7 +141,7 @@ public class MovieDao {
 	
 	// 메인에 출력될 영화 리스트 (mv_isTrue="T" 모두 가져오기) 
 	public List<MovieVO>getMoviesForMainPage() {
-		List<MovieVO> list = jdbcTemplate.query("select min(mv_num) mv_num, mv_title, mv_rating, mv_detail, mv_releasedate, mv_postimage, mv_trailer from movie where mv_isTrue='T' group by mv_title order by mv_releasedate"
+		List<MovieVO> list = jdbcTemplate.query("select min(mv_num) mv_num, mv_title, mv_rating, mv_releasedate, mv_postimage from movie where mv_isTrue='T' group by mv_title, mv_rating, mv_releasedate, mv_postimage  order by mv_releasedate"
 				, new BeanPropertyRowMapper<MovieVO>(MovieVO.class));
 		return list;
 	}

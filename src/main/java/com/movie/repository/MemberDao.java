@@ -212,7 +212,7 @@ public class MemberDao {
 	// 나의 예약정보 가져오기 1. 내 아이디로 가져오기 (mv_num별)
 	public List<BookVO> getBookListByMbIDGroupByMvNum(String mb_ID){
 		return jdbcTemplate.query("select mv_num, mv_title, bk_date, bk_wdate, tt_num, tt_seatnum, "
-				+ "case when to_char(current_timestamp(), 'yyyy-mm-dd hh24:mm')  >= concat(bk_wdate, ' ',mv_time) then 'noRefund' else 'T' end bk_paid " + 
+				+ "case when to_char(current_timestamp, 'yyyy-mm-dd hh24:mm')  >= concat(bk_wdate, ' ',mv_time) then 'noRefund' else 'T' end bk_paid " + 
 				"from book where mb_id = ? order by bk_date ", new BeanPropertyRowMapper<BookVO>(BookVO.class), mb_ID);
 	}
 	

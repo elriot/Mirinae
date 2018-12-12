@@ -40,7 +40,7 @@ public class ScheduleDao {
 			@Override
 			public void run() {
 				// movie 테이블에 현재날짜와 상영종료날짜 비교해서 지난 레코드는 mv_isTrue를 F로 수정
-				jdbcTemplate.update("update movie set mv_isTrue='F' where mv_endDate < to_char(current_timestamp(), 'yyyy-mm-dd')");
+				jdbcTemplate.update("update movie set mv_isTrue='F' where mv_endDate < to_char(current_timestamp, 'yyyy-mm-dd')");
 				
 				//System.out.println("5초에 한번씩 작동함 :");
 			}
@@ -118,7 +118,7 @@ public class ScheduleDao {
 		// 예약 추가하기
 		public void insertBook(BookVO bookVO) {
 			String sql = "INSERT INTO book (mb_ID, mv_num, tt_num, tt_seatNum, bk_date, bk_wDate, mv_time, bk_price, bk_paid, mv_title) "
-					+ "VALUES (?, ?, ?, ?, current_timestamp(), ?, ?, ?, ?, ?); ";
+					+ "VALUES (?, ?, ?, ?, current_timestamp, ?, ?, ?, ?, ?); ";
 			jdbcTemplate.update(sql, bookVO.getMb_ID(), bookVO.getMv_num(), bookVO.getTt_num(),
 					bookVO.getTt_seatNum(), bookVO.getBk_wDate(), bookVO.getMv_time(), bookVO.getBk_price(), "T", bookVO.getMv_title());
 
@@ -126,7 +126,7 @@ public class ScheduleDao {
 
 	// 선택 가능한 영화 타이틀 가져오기
 	public List<MovieVO> getMovies(String title) {
-		String sql = "select * from movie where mv_title=? and mv_isTrue='T' and mv_endDate >= to_char(current_timestamp(), 'yyyy-mm-dd') group by mv_time";
+		String sql = "select * from movie where mv_title=? and mv_isTrue='T' and mv_endDate >= to_char(current_timestamp, 'yyyy-mm-dd') group by mv_time";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), title);
 		return list;
 	}
