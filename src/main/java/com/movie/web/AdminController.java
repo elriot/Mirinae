@@ -137,7 +137,7 @@ public class AdminController {
 			//if(!dic.exists()) {
 				//dic.mkdirs();
 			//}
-			File file = new File(realPath+"/upload", filename);
+			File file = new File(realPath, filename);
 			IOUtils.copy(multi.getInputStream(), new FileOutputStream(file));
 			mv.setMv_postImage(filename);
 			adminDao.insertMv(mv);
@@ -148,11 +148,11 @@ public class AdminController {
 					mv.setMv_time(mv_times[j]);
 					//int maxMvNum = adminDao.getMaxMvnum();
 					//int directory = (((maxMvNum+1)/100)+1)*100;
-//					File dic = new File(realPath+"/"+directory+"/"+(maxMvNum+1));
+					//File dic = new File(realPath+"/upload""+(maxMvNum+1));
 //					if(!dic.exists()) {
 //						dic.mkdirs();
 //					}
-					File file = new File(realPath+"/upload", filename);
+					File file = new File(realPath, filename);
 					IOUtils.copy(multi.getInputStream(), new FileOutputStream(file));
 					mv.setMv_postImage(filename);
 					adminDao.insertMv(mv);
