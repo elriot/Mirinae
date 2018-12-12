@@ -25,7 +25,6 @@ public class CsDao {
 	private void init(){
 		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
 		simpleJdbcInsert.withTableName("cs"); //
-		
 	}
 
 	public void writeCs(CsVO csVO) {
