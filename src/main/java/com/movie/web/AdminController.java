@@ -124,10 +124,6 @@ public class AdminController {
 		String[] tt_nums = request.getParameterValues("tt_num");
 		String[] mv_times = request.getParameterValues("mv_time");
 		
-		Integer maxMvNum = adminDao.getMaxMvnum();
-		if (maxMvNum==null) {
-			maxMvNum= 1;
-		}
 		//int directory = (((maxMvNum+1)/100)+1)*100;
 		
 		if(tt_nums.length == 1 && mv_times.length == 1) {

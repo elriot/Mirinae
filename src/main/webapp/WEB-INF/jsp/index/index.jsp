@@ -61,7 +61,8 @@ $(document).ready(function () {
 				<td class="text-center">
 					<img src="img/${item.mv_title}.jpg" width="270" height="400" class="img-thumbnail"><br>
 					<img src="img/${item.mv_rating}_mini.png" width="20" height="20"><b>&nbsp;${item.mv_title }</b><br>
-					 ${item.mv_releaseDate } 개봉  --- ${item.mv_num}<br>	
+					 ${item.mv_releaseDate } 개봉  --- ${item.mv_num}<br>
+					 ${item.toString() }	
 					<input type="button" class="btn center" onclick="location.href='movie/detail?mv_num=${item.mv_num}'" value="상세보기"><br>
 				</td>
 
