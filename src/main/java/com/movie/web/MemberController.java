@@ -170,7 +170,7 @@ public class MemberController {
 		// 1) 내 아이디로 가져오기, 2) 영화정보 가져오기, 3) 좌석정보 가져오기
 		List<BookVO> bkList = memberService.getBookListByMbIDGroupByMvNum(memberVO.getMb_ID());
 
-		List<BookVO> seatList = null;		
+/*		List<BookVO> seatList = null;		
 		Map<Integer, List<BookVO>> map = new HashMap<>(); 
 		for (int i=0; i<bkList.size(); i++) {
 			BookVO bookVO = bkList.get(i);
@@ -180,11 +180,7 @@ public class MemberController {
 			for(int j=0; j<seatList.size(); j++) {
 				BookVO vo = seatList.get(j);
 			}		 
-			
-
 		}
-
-
 
 		List<BookVO> stList = new ArrayList<>();
 		for(int i=0; i<bkList.size(); i++) {
@@ -216,10 +212,7 @@ public class MemberController {
 	
 			}
 			//System.out.println(bookVO.getMv_num()+","+bookVO.getBk_paid());
-			
-			
-			
-		}
+		}*/
 		
 		
 		
@@ -231,7 +224,7 @@ public class MemberController {
 		
 		model.addAttribute("memberVO", memberVO);
 		model.addAttribute("bkList", bkList);
-		model.addAttribute("map", map);
+//		model.addAttribute("map", map);
 		
 		
 		

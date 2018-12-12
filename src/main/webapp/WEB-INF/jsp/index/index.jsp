@@ -61,9 +61,11 @@ $(document).ready(function () {
 				<td class="text-center">
 					<img src="img/${item.mv_title}.jpg" width="270" height="400" class="img-thumbnail"><br>
 					<img src="img/${item.mv_rating}_mini.png" width="20" height="20"><b>&nbsp;${item.mv_title }</b><br>
-					 ${item.mv_releaseDate } 개봉  --- ${item.mv_num}<br>
-					 ${item.toString() }	
-					<input type="button" class="btn center" onclick="location.href='movie/detail?mv_title=${item.mv_title}'" value="상세보기"><br>
+					 ${item.mv_releaseDate } 개봉 <br>
+					 <form action="movie/detail" method="post">
+					 	<input type="hidden" name="mv_num" value="${item.mv_num}">
+					 	<input type="submit" class="btn center" value="상세보기">
+					 </form>
 				</td>
 
 				<c:if test="${no%3==0 }">

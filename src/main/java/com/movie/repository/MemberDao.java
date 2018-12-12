@@ -32,7 +32,12 @@ public class MemberDao {
 	public void init() {
 		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
 		simpleJdbcInsert.withTableName("member").usingGeneratedKeyColumns("mb_num"); // 필수
-		jdbcTemplate.execute("insert into member (mb_ID, mb_passwd, mb_name, mb_email, mb_phone, mb_grade, mb_point, mb_joinDate) values ('admin', '1234', '관리자', 'admin@admin.ccc', '000', 'master', 99999999, '2018-01-01 10:54:38.021')");
+		
+		int count = countById("admin");
+		if (count == 0) {
+			jdbcTemplate.execute("insert into member (mb_ID, mb_passwd, mb_name, mb_email, mb_phone, mb_grade, mb_point, mb_joinDate) values ('admin', '1234', '관리자', 'admin@admin.ccc', '000', 'master', 99999999, '2018-01-01 10:54:38.021')");
+		}
+		
 		// 기본키 이면서 AUTO_INCREMENT 컬럼이름 설정
 		// simpleJdbcInsert.usingGeneratedKeyColumns("");
 	}
@@ -206,7 +211,9 @@ public class MemberDao {
 
 	// 나의 예약정보 가져오기 1. 내 아이디로 가져오기 (mv_num별)
 	public List<BookVO> getBookListByMbIDGroupByMvNum(String mb_ID){
-		return jdbcTemplate.query("SELECT distinct mv_num FROM book WHERE mb_ID=? order by mv_num asc ", new BeanPropertyRowMapper<BookVO>(BookVO.class), mb_ID);
+		return jdbcTemplate.query("select mv_num, mv_title, bk_date, bk_wdate, tt_num, tt_seatnum, "
+				+ "case when to_char(current_timestamp(), 'yyyy-mm-dd hh24:mm')  >= concat(bk_wdate, ' ',mv_time) then 'noRefund' else 'T' end bk_paid " + 
+				"from book where mb_id = ? order by bk_date ", new BeanPropertyRowMapper<BookVO>(BookVO.class), mb_ID);
 	}
 	
 	// 나의 예약정보 가져오기 2. mv_nu으로 영화 타이틀 가져오기

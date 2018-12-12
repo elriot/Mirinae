@@ -78,7 +78,7 @@ public class AdminDao {
 	// 전치용 20181207 추가
 	// 오늘 예매율
 	public List<List<Object>> dayBookTotal() {
-		String sql = "select mv_title, count(*) cnt from book where DATE(bk_wDate) = DATE(current_timestamp(), 'yyyy-mm-dd') group by mv_title";
+		String sql = "select  mv_title, count(*) cnt  from book where to_char(current_timestamp(), 'yyyy-mm-dd') = bk_wdate group by mv_title";
 		//jdbcTemplate.query("select mv_title, count(*) from book where DATE(bk_wDate) = DATE(now()) group by mv_title", 
 				//new BeanPropertyRowMapper<Map<String, Integer>>(Map.class));
 		//대충 요리해서 쓰도록.

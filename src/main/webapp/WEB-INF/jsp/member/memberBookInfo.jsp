@@ -29,19 +29,20 @@
 					<td>${item.bk_wDate} &nbsp; ${item.mv_time}</td>
 					<td>${item.tt_num }</td>					
 					<td>
-						<c:set var="mv_num" value="${item.mv_num}"/>
-						<c:forEach var="list" items="${requestScope.map}" varStatus="num">												 
-				 		   <c:forEach var="item2" items="${list.value}">
-				 		   <c:set var="i" value="1"/>
-				 		   	<c:if test="${mv_num eq list.key }">
-				 		   			<c:if test="${i%5==0}">
-										<br>
-									</c:if>	
-				 		   		<c:out value="${item2.tt_seatNum}"/>
-	 		   					<c:set var="i" value="${i+1}"/>		
-				 		   </c:if>
-					     </c:forEach> 				    
-			 		    </c:forEach>
+						${item.tt_seatNum }
+<%-- 						<c:set var="mv_num" value="${item.mv_num}"/> --%>
+<%-- 						<c:forEach var="list" items="${requestScope.map}" varStatus="num">												  --%>
+<%-- 				 		   <c:forEach var="item2" items="${list.value}"> --%>
+<%-- 				 		   <c:set var="i" value="1"/> --%>
+<%-- 				 		   	<c:if test="${mv_num eq list.key }"> --%>
+<%-- 				 		   			<c:if test="${i%5==0}"> --%>
+<!-- 										<br> -->
+<%-- 									</c:if>	 --%>
+<%-- 				 		   		<c:out value="${item2.tt_seatNum}"/> --%>
+<%-- 	 		   					<c:set var="i" value="${i+1}"/>		 --%>
+<%-- 				 		   </c:if> --%>
+<%-- 					     </c:forEach> 				     --%>
+<%-- 			 		    </c:forEach> --%>
 					</td>															
 					<td>
 					<c:choose>

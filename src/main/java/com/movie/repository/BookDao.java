@@ -67,7 +67,7 @@ public class BookDao {
 	// 예약 추가하기
 	public void insertBook(BookVO bookVO) {
 		String sql = "INSERT INTO book (mb_ID, mv_num, tt_num, tt_seatNum, bk_date, bk_wDate, mv_time, bk_price, bk_paid, mv_title) "
-				+ "VALUES (?, ?, ?, ?, now(), ?, ?, ?, ?, ?); ";
+				+ "VALUES (?, ?, ?, ?, to_char(current_timestamp(), 'yyyy-mm-dd hh24:mi:ss'), ?, ?, ?, ?, ?); ";
 		jdbcTemplate.update(sql, bookVO.getMb_ID(), bookVO.getMv_num(), bookVO.getTt_num(), bookVO.getTt_seatNum(),
 				bookVO.getBk_wDate(), bookVO.getMv_time(), bookVO.getBk_price(), "T", bookVO.getMv_title());
 
@@ -75,14 +75,14 @@ public class BookDao {
 
 	// 선택 가능한 영화 타이틀 가져오기
 	public List<MovieVO> getMovies(String title) {
-		String sql = "select * from movie where mv_title=? and mv_isTrue='T' and mv_startDate <= to_char(current_timestamp(), 'yyyy-mm-dd') and mv_endDate >= to_char(current_timestamp(), 'yyyy-mm-dd') group by mv_time";
+		String sql = "select mv_time, mv_enddate from movie where mv_title=? and mv_isTrue='T' and mv_startDate <= to_char(current_timestamp(), 'yyyy-mm-dd') and mv_endDate >= to_char(current_timestamp(), 'yyyy-mm-dd') group by mv_time";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), title);
 		return list;
 	}
 
 	// 선택 가능한 날짜 가져오기
 	public List<MovieVO> getAbleDate(String mv_title, String mv_date) {
-		String sql = "select * from movie where mv_startDate <= ? and mv_endDate >= ? and mv_title =? and mv_isTrue='T' group by mv_time";
+		String sql = "select mv_time from movie where mv_startDate <= ? and mv_endDate >= ? and mv_title =? and mv_isTrue='T' group by mv_time";
 		List<MovieVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<MovieVO>(MovieVO.class), mv_date,
 				mv_date, mv_title);
 		return list;
