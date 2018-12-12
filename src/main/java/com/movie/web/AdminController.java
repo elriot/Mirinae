@@ -123,14 +123,15 @@ public class AdminController {
 		
 		String[] tt_nums = request.getParameterValues("tt_num");
 		String[] mv_times = request.getParameterValues("mv_time");
+		
 		if(tt_nums.length == 1 && mv_times.length == 1) {
 			int maxMvNum = adminDao.getMaxMvnum();
 			int directory = (((maxMvNum+1)/100)+1)*100;
-			File dic = new File(realPath+"/"+directory+"/"+(maxMvNum+1));
-			if(!dic.exists()) {
-				dic.mkdirs();
-			}
-			File file = new File(realPath+"/"+directory+"/"+(maxMvNum+1), filename);
+			//File dic = new File(realPath+"/"+directory+"/"+(maxMvNum+1));
+			//if(!dic.exists()) {
+				//dic.mkdirs();
+			//}
+			File file = new File(realPath+"/upload", filename);
 			IOUtils.copy(multi.getInputStream(), new FileOutputStream(file));
 			mv.setMv_postImage(filename);
 			adminDao.insertMv(mv);
@@ -141,11 +142,11 @@ public class AdminController {
 					mv.setMv_time(mv_times[j]);
 					int maxMvNum = adminDao.getMaxMvnum();
 					int directory = (((maxMvNum+1)/100)+1)*100;
-					File dic = new File(realPath+"/"+directory+"/"+(maxMvNum+1));
-					if(!dic.exists()) {
-						dic.mkdirs();
-					}
-					File file = new File(realPath+"/"+directory+"/"+(maxMvNum+1), filename);
+//					File dic = new File(realPath+"/"+directory+"/"+(maxMvNum+1));
+//					if(!dic.exists()) {
+//						dic.mkdirs();
+//					}
+					File file = new File(realPath+"/upload", filename);
 					IOUtils.copy(multi.getInputStream(), new FileOutputStream(file));
 					mv.setMv_postImage(filename);
 					adminDao.insertMv(mv);
@@ -153,6 +154,7 @@ public class AdminController {
 
 			}
 		}
+		
 		return "redirect:/admin/main";
 	}
 	
