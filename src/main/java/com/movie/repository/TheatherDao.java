@@ -117,14 +117,11 @@ public class TheatherDao {
 		jdbcTemplate.execute("insert into theather values ('3', 'C09')");
 		jdbcTemplate.execute("insert into theather values ('3', 'C10')");
 
-
-		
-
 	}
 	
 	// 상영관 정보 가져오기
 	public List<TheatherVO> getTtNumList() {
-		List<TheatherVO> list = jdbcTemplate.query("select tt_num from theather group by tt_num", 
+		List<TheatherVO> list = jdbcTemplate.query("select tt_num from theather group by tt_num order by tt_num asc", 
 				new BeanPropertyRowMapper<TheatherVO>(TheatherVO.class));
 		return list;
 	}

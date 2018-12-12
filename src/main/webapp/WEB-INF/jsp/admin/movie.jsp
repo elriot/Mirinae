@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-lg-12">
 
-                        <form action="movie" method="post" role="form" enctype="multipart/form-data">
+                        <form action="insertMv" method="post" role="form" enctype="multipart/form-data">
 
                 			<div class="form-group">
                                 <label>영화 제목</label>
