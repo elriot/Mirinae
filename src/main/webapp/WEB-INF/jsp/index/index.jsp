@@ -89,36 +89,3 @@ $(document).ready(function () {
 </body>
    
 <%@include file="../footer.jsp"%>
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>제목</th>
-			<th>관람등급</th>
-			<th>개봉일</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:choose>
-			<c:when test="${not empty list}">
-				<c:set var="no" value="1" />
-				<c:forEach var="item" items="${list}">
-					<tr>
-						<td><a href="movie/detail?mv_num=${item.mv_num}">${item.mv_title}</a></td>
-						<td>${item.mv_rating}</td>
-						<td>${item.mv_releaseDate }</td>
-					</tr>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-				<tr>
-					<td colspan="3">개봉된 영화 없음 ㅋ</td>
-				</tr>
-			</c:otherwise>
-		</c:choose>
-
-
-	</tbody>
-</table>
-
-
-
