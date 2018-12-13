@@ -31,7 +31,7 @@ public class MovieDao {
 		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("movie").usingGeneratedKeyColumns("mv_num");
 		
 		
-		Timer timer = new Timer();
+		Timer timer = new Timer(true);
 		TimerTask timerTask = new TimerTask() {
 			
 			@Override
